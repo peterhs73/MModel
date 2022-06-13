@@ -50,8 +50,9 @@ class Model:
 
         sig_list = [str(param) for param in self.__signature__.parameters.values()]
 
-        mod_str_list = [getattr(mod, "info", mod.__name__) for mod in self._modifiers]
-        if mod_str_list:
+        if mod_str_list := [
+            getattr(mod, "info", mod.__name__) for mod in self._modifiers
+        ]:
             mod_str = ", ".join(mod_str_list)
         else:
             mod_str = "none"

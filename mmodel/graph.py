@@ -71,11 +71,9 @@ class ModelGraph(nx.DiGraph):
         # if it is not a proper function just print the repr
         # Model class instance has the attr __name__
         base_name = getattr(node_dict["base_obj"], "__name__", repr(callable))
-        mod_str_list = [
+        if mod_str_list := [
             getattr(mod, "info", mod.__name__) for mod in node_dict["modifiers"]
-        ]
-
-        if mod_str_list:
+        ]:
             mod_str = ", ".join(mod_str_list)
         else:
             mod_str = "none"

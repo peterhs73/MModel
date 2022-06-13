@@ -33,7 +33,7 @@ def test_update_settings():
     assert setttings["graph_attr"]["label"] == "test label"
 
     # check default is deepcopied
-    assert not "label" in DEFAULT_SETTINGS["graph_attr"]
+    assert "label" not in DEFAULT_SETTINGS["graph_attr"]
 
 
 def test_draw_plain_model(mmodel_G):

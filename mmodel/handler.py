@@ -109,12 +109,11 @@ class MemHandler(TopologicalHandler):
     def finish(self, data_instance, returns):
         """Finish and return values"""
         value_dict = data_instance[0]
-        if len(returns) == 1:
-            return_val = value_dict[returns[0]]
-        else:
-            return_val = tuple(value_dict[rt] for rt in returns)
-
-        return return_val
+        return (
+            value_dict[returns[0]]
+            if len(returns) == 1
+            else tuple(value_dict[rt] for rt in returns)
+        )
 
 
 class PlainHandler(TopologicalHandler):
@@ -155,12 +154,11 @@ class PlainHandler(TopologicalHandler):
 
     def finish(self, value_dict, returns):
         """Finish and return values"""
-        if len(returns) == 1:
-            return_val = value_dict[returns[0]]
-        else:
-            return_val = tuple(value_dict[rt] for rt in returns)
-
-        return return_val
+        return (
+            value_dict[returns[0]]
+            if len(returns) == 1
+            else tuple(value_dict[rt] for rt in returns)
+        )
 
 
 class H5Handler(TopologicalHandler):

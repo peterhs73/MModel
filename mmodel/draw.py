@@ -74,11 +74,7 @@ def draw_graph(G, label: str = ""):
 
     for u, v, edict in G.edges(data=True):
 
-        if "val" in edict:
-            xlabel = ", ".join(edict["val"])
-        else:
-            xlabel = ""
-
+        xlabel = ", ".join(edict["val"]) if "val" in edict else ""
         dot_graph.edge(u, v, xlabel=xlabel)
 
     return dot_graph
